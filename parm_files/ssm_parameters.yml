@@ -1,0 +1,85 @@
+parameters:
+  - parameter_group: meltano
+    parameter_name: tap-mssql--secretdatabase
+    tags:
+      - environment: development
+      - service: meltano
+    plugins:
+      - plugin_name: tap_mssql__secretdatabase
+        pluginsettings:
+          - setting_name: database
+            value: SecretDatabase
+            type: SecureString
+            description: The name of the database or instance to connect to
+          - setting_name: host
+            value: SecretHost
+            type: SecureString
+            description: The host name or IP Address
+          - setting_name: password
+            value: SecretValue
+            type: SecureString
+            description: The database user password to connect to the database
+          - setting_name: port
+            value: 1433
+            type: SecureString
+            description: The port the MS SQL database is running on
+          - setting_name: use_date_datatype
+            value: true
+            type: String
+            description:  Indicates whether your want a native MS SQL date emitted as a date (true) or as a datetime (false)
+          - setting_name: user
+            value: SecretValue
+            type: SecureString
+            description: The database user to connect ot the database
+      - plugin_name: target_snowflake
+        pluginsettings:
+          - setting_name: dbname
+            value: SecretDatabase
+            type: SecureString
+            description: The default database for the Meltano tap to land data into
+          - setting_name: schema
+            value: SecretSchema
+            type: SecureString
+            description: The default schema for the Meltano tap to land data into
+  - parameter_group: meltano
+    parameter_name: tap-oracle--secretdatabase
+    tags:
+      - environment: development
+      - service: meltano
+    plugins:
+      - plugin_name: tap_oracle__secretdatabase
+        pluginsettings:
+          - setting_name: sid
+            value: SecretDatabase
+            type: SecureString
+            description: The name of the Oracle database instance (SID) to connect to
+          - setting_name: filter_schemas
+            value: SecretSchemaName
+            type: SecureString
+            description: Restricts the tables discovered / cataloged to the SecretSchemaName            
+          - setting_name: host
+            value: SecretHost
+            type: SecureString
+            description: The host name or IP Address
+          - setting_name: password
+            value: SecretValue
+            type: SecureString
+            description: The database user password to connect to the database
+          - setting_name: port
+            value: 1521
+            type: SecureString
+            description: The port the Oracle database is running on
+          - setting_name: user
+            value: SecretValue
+            type: SecureString
+            description: The database user to connect ot the database
+      - plugin_name: target_snowflake
+        pluginsettings:
+          - setting_name: dbname
+            value: SecretDatabase
+            type: SecureString
+            description: The default database for the Meltano tap to land data into
+          - setting_name: schema
+            value: SecretSchema
+            type: SecureString
+            description: The default schema for the Meltano tap to land data into

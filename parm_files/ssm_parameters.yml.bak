@@ -1,0 +1,85 @@
+parameters:
+  - parameter_group: meltano
+    parameter_name: tap-mssql--secretdatabase
+    tags:
+      - environment: development
+      - service: meltano
+    plugins:
+      - plugin_name: tap_mssql__secretdatabase
+        pluginsettings:
+          - database:
+              - value: SecretDatabase
+                type: SecureString
+                description: The name of the database or instance to connecto to
+            host:
+              - value: SecretHost
+                type: SecureString
+                description: The host name or IP Address
+            password:
+              - value: SecretValue
+                type: SecureString
+                description: The database user password to connect to the database
+            port:
+              - value: 1433
+                type: SecureString
+                description: The port the MS SQL database is running on
+            use_date_datatype:
+              - value: true
+                type: String
+                description:  Indicates whether your want a native MS SQL date emitted as a date (true) or as a datetime (false)
+            user:
+              - value: SecretValue
+                type: SecureString
+                description: The database user to connect ot the database
+      - plugin_name: target_snowflake
+        plugin_settings:
+            - dbname:
+                - value: SecretDatabase
+                  type: SecureString
+                  description: The default database for the Meltano tap to land data into
+              schema:
+                - value: SecretSchema
+                  type: SecureString
+                  description: The default schema for the Meltano tap to land data into
+  - parameter_group: meltano
+    parameter_name: tap-oracle--secretdatabase
+    tags:
+      - environment: development
+      - service: meltano
+    plugins:
+      - plugin_name: tap_oracle__secretdatabase
+        pluginsettings:
+          - database:
+              - value: SecretDatabase
+                type: SecureString
+                description: The name of the database or instance to connecto to
+            host:
+              - value: SecretHost
+                type: SecureString
+                description: The host name or IP Address
+            password:
+              - value: SecretValue
+                type: SecureString
+                description: The database user password to connect to the database
+            port:
+              - value: 1433
+                type: SecureString
+                description: The port the MS SQL database is running on
+            use_date_datatype:
+              - value: true
+                type: String
+                description:  Indicates whether your want a native MS SQL date emitted as a date (true) or as a datetime (false)
+            user:
+              - value: SecretValue
+                type: SecureString
+                description: The database user to connect ot the database
+      - plugin_name: target_snowflake
+        plugin_settings:
+            - dbname:
+                - value: SecretDatabase
+                  type: SecureString
+                  description: The default database for the Meltano tap to land data into
+              schema:
+                - value: SecretSchema
+                  type: SecureString
+                  description: The default schema for the Meltano tap to land data into                  
