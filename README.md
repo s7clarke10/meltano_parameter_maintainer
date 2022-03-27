@@ -1,7 +1,7 @@
 # meltano_parameter_maintainer
 A python application to maintain SSM Parameters in AWS for the purpose of the Meltano ELT tool.
 
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/s7clarke10/meltano_parameter_maintainer)
+[![Open in Visual Studio Code](https://github.com/s7clarke10/meltano_parameter_maintainer/blob/main/static_images/Open_Visual_Studio_Code.svg)](https://open.vscode.dev/s7clarke10/meltano_parameter_maintainer)
 
 ## How to use it
 
